@@ -1,0 +1,29 @@
+Return-Path: <noreply@paypa1-secure.tk>
+Received: from mail.paypa1-secure.tk (mail.paypa1-secure.tk [199.59.243.220])
+	by mx.recipient.com with ESMTPS;
+	Wed, 13 May 2026 09:42:11 -0700
+Authentication-Results: mx.recipient.com;
+	spf=fail (sender 199.59.243.220 not in spf for paypa1-secure.tk) smtp.mailfrom=noreply@paypa1-secure.tk;
+	dkim=none;
+	dmarc=fail (alignment failed) header.from=paypa1-secure.tk
+From: "PayPaI Security" <noreply@paypa1-secure.tk>
+Reply-To: <support-team@helpdesk.click>
+To: customer@recipient.com
+Subject: Urgent: Your account will be locked in 24 hours
+Date: Wed, 13 May 2026 09:42:09 -0700
+Content-Type: text/plain; charset=utf-8
+
+Dear Customer,
+
+We detected unusual activity on your PayPaI account. Your account will be
+locked within 24 hours unless you verify your password immediately.
+
+Click here to verify your login: http://paypa1.com-secure-login.tk/verify
+
+Or use this shortened link: https://bit.ly/3xyZ123
+
+For more info see https://paypal.com/legal
+
+If you do not act within 24 hours, your access will be suspended.
+
+PayPaI Security Team

@@ -1,0 +1,25 @@
+Return-Path: <invoices@stripe.com>
+Received: from m.stripe.com (m.stripe.com [13.249.10.5])
+	by mx.recipient.com with ESMTPS;
+	Wed, 13 May 2026 14:02:33 -0700
+Authentication-Results: mx.recipient.com;
+	spf=pass smtp.mailfrom=invoices@stripe.com;
+	dkim=pass header.d=stripe.com;
+	dmarc=pass header.from=stripe.com
+From: "Stripe" <invoices@stripe.com>
+To: info@darkforgeai.com
+Subject: Your April invoice is ready
+Date: Wed, 13 May 2026 14:02:30 -0700
+Content-Type: text/plain; charset=utf-8
+
+Hi Hasan,
+
+Your April 2026 invoice is now available. You can review it in your Stripe
+dashboard:
+
+https://dashboard.stripe.com/invoices
+
+If you have any questions, reply to this email and our team will help.
+
+Thanks,
+Stripe Billing
