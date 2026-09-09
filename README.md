@@ -2,7 +2,7 @@
 
 > Drop a `.eml` in, get a verdict out. Header forensics, URL analysis, suspicious-pattern heuristics, and an LLM verdict explainer — packaged as both a CLI and a FastAPI service.
 
-[![Python](https://img.shields.io/badge/Python-3.11+-3776AB.svg)]() [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![CI](https://github.com/forgehk/phish-forge/actions/workflows/ci.yml/badge.svg)](https://github.com/forgehk/phish-forge/actions/workflows/ci.yml) [![Python](https://img.shields.io/badge/Python-3.11+-3776AB.svg)]() [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ---
 
