@@ -54,11 +54,13 @@ Real phishing detection in a SOC pipeline combines:
 ## Install & run
 
 ```bash
-pip install phish-forge
+git clone https://github.com/forgehk/phish-forge.git && cd phish-forge
+pip install -e ".[api]"      # drop [api] if you only need the CLI
 
 # CLI
 phish-forge analyze suspicious.eml
 phish-forge analyze suspicious.eml --json | jq .
+phish-forge analyze suspicious.eml --stix > indicators.json   # STIX 2.1 bundle
 
 # HTTP service (drop emails via curl, integrate into a SOAR playbook)
 phish-forge serve --port 8000
@@ -158,16 +160,29 @@ Plug it into a SOAR runbook or just hit it from a Slack-bot intake form.
 
 ---
 
+## STIX 2.1 export
+
+`--stix` turns the flagged observables into a STIX 2.1 bundle you can import into a TIP (OpenCTI, MISP, etc.):
+
+- one `indicator` per URL with at least one risk signal (`[url:value = '...']`); clean links are left out
+- the `From` address when a header check fired, and the `Reply-To` address when it points at a different domain (`[email-addr:value = '...']`)
+- `indicator_types` is `malicious-activity` for a phishing verdict and `anomalous-activity` for suspicious; `confidence` is the URL or report score
+- a benign email gives a bundle with no objects
+
+Indicator ids are UUIDv5 of the pattern, so the same URL seen in two emails produces the same indicator id and dedups on import.
+
+---
+
 ## Roadmap
 
 - [x] Header / URL / body heuristics
 - [x] CLI + FastAPI
 - [x] JSON output for SOAR integration
+- [x] STIX 2.1 indicator export (`--stix`)
 - [ ] Pluggable LLM verdict explainer (Anthropic / OpenAI)
 - [ ] Attachment sandboxing (PE / Office macro detection)
 - [ ] WHOIS age check for URL hostnames
 - [ ] Live reputation lookups (Google Safe Browsing, PhishTank, URLhaus)
-- [ ] STIX 2.1 indicator export
 
 ---
 
