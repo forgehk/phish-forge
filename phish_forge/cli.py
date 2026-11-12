@@ -7,11 +7,15 @@ import sys
 from pathlib import Path
 
 from .scoring import analyze
+from .stix import to_stix_json
 
-def _analyze_one(path: Path, as_json: bool) -> int:
+def _analyze_one(path: Path, as_json: bool, as_stix: bool = False) -> int:
     report = analyze(path)
     if as_json:
         print(report.to_json())
+        return 0
+    if as_stix:
+        print(to_stix_json(report))
         return 0
 
     verdict = report.verdict.value.upper()
@@ -50,7 +54,9 @@ def main(argv: list[str] | None = None) -> int:
 
     a = sub.add_parser("analyze", help="Analyze a single .eml file.")
     a.add_argument("path", type=Path)
-    a.add_argument("--json", action="store_true")
+    fmt = a.add_mutually_exclusive_group()
+    fmt.add_argument("--json", action="store_true", help="Print the full report as JSON.")
+    fmt.add_argument("--stix", action="store_true", help="Print flagged indicators as a STIX 2.1 bundle.")
 
     s = sub.add_parser("serve", help="Run the FastAPI service.")
     s.add_argument("--host", default="127.0.0.1")
@@ -59,7 +65,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     if args.command == "analyze":
-        return _analyze_one(args.path.resolve(), args.json)
+        return _analyze_one(args.path.resolve(), args.json, args.stix)
 
     if args.command == "serve":
         try:
